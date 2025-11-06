@@ -1,0 +1,40 @@
+name: build and deploy
+
+on: 
+  push:
+    branches: [ dperry-custom ]
+  workflow_dispatch: #allow manual triggering
+
+jobs:
+    build-and-deploy:
+      runs-on: ubuntu-latest:
+      steos:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+    - name: Install ddependecies
+      run: npm install
+
+    - name: Build
+      run: npm run build
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v2
+
+    - name: Upload Artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        oath: ./dist
+
+    - name: Deploy to Github Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
