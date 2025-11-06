@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install --force
+          npm install --force --legacy-peer-deps --no-optional
 
       - name: Build
         run: |
