@@ -3,7 +3,7 @@ name: build and deploy
 on: 
   push:
     branches: [ dperry-custom ]
-  workflow_dispatch: #allow manual triggering
+  workflow_dispatch: #allow manual ztriggering
 
 jobs:
   build:
